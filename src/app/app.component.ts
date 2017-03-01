@@ -8,11 +8,12 @@ import { Component } from '@angular/core';
     <a routerLink="/encounters"> Encounters page</a>
     <a routerLink="/report"> Report page</a>
     <a routerLink="/notfound"> Notfound page</a>
+    
     <div class="page">
-    <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   `,  
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 
