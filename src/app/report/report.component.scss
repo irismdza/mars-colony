@@ -1,0 +1,32 @@
+.register {
+    background-color: black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;   
+    .container {
+        height: 100vh;
+    }
+    h1 {
+        font-size: 50px;
+        color: white;
+        font-weight: normal;
+    }
+    input,
+    select {
+        border: 0;
+        border-bottom: 1px solid gray;
+        background-color: black;
+        width: 100%;
+        color: red;
+        font-size: 20px;
+    }
+    input::placeholder {
+        color: red;
+    }
+    button {
+        background-color: black;
+        border: none;
+        color: white;
+        font-size: 50px;
+    }
+}

@@ -1,38 +1,43 @@
 export interface Job {
-    id: number;
+    id: string;
     name: string;
     description: string;
 }
 
-export class newColonist {
+export class NewColonist {
     name: string;
-    age: number;
-    job_id: Job;
+    age: string;
+    job_id: string;
+    constructor(name: string, age: string, job_id: string) {
+        this.name = name;
+        this.age = age;
+        this.job_id = job_id;
+    }
 }
 
 export interface Colonist {
-    id: number;
+    id: string;
     name: string;
     age: number;
     job: Job;
 }
 
 export interface Alien {
-    id: number;
+    id: string;
     type: string;
     submitted_by: string;
     description: string;
 }
 
-export class newEncounter {
+export class NewEncounter {
     date: number;
     atype: string;
     action: string;
-    colonist_id: number;
+    colonist_id: string;
 }
 
 export interface Encounter {
-    id: number;
+    id: string;
     date: number;
     atype: string;
     action: string;
