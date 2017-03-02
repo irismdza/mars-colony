@@ -1,19 +1,15 @@
-<body>
+<body class="report">
   <h1>Report Encounter</h1>
   <p>Safety on Mars is your responsibility</p>
-  <fieldset>
-    <select required name="alien-type">
-      <option>Select alien type</option>
-      <option value="Special K">Special K</option>
-      <option value="Endomorph">Endomorph</option>
-      <option value="Endomorph">Endomorph</option>
-      <option value="Octospider">Octospider</option>
-      <option value="The Predator">The Predator</option>
-      <option value="Darth Vader">Darth Vader</option>
-      <option value="Donald Trump">Donald Trump</option>
-      <option value="Yoda">Yoda</option>
-    </select>
-    <textarea placeholder="Action taken"></textarea>
-  </fieldset>
-  <button>Submit report</button>
+  <form [formGroup]="reportForm">
+    <fieldset>
+      <select required formControlName="atype" name="atype">
+        <option value="none">Select alien type</option>
+        <option *ngFor="let alien of aliens" value="{{ alien.id }}">{{ alien.type }}</option>
+      </select>
+    </fieldset>
+    <textarea formControlName="action" placeholder="Action taken" name="action" required></textarea>
+    <button type="button" (click)="logActionTaken()">Submit Report</button>
+  </form>
+  {{ aliens[2].atype }} {{ aliens[3].action }}
 </body>

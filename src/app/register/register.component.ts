@@ -35,8 +35,6 @@ export class RegisterComponent implements OnInit {
       description: 'something something',
     }];
 
-    // this.newColonist = new NewColonist('', '', '');
-
     this.registerForm = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       age: new FormControl('', [Validators.required, this.acceptAge(18, 50)]),
