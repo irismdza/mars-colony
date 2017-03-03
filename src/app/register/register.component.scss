@@ -1,7 +1,6 @@
 .register {
     background-color: black;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
     color: white;   
     .container {
         height: 100vh;
@@ -10,6 +9,9 @@
         font-size: 50px;
         color: white;
         font-weight: normal;
+    }
+    fieldset {
+        border: none;
     }
     input,
     select {

@@ -31,11 +31,11 @@ export interface Alien {
 }
 
 export class NewEncounter {
-    date: number;
+    date: string;
     atype: string;
     action: string;
     colonist_id: string;
-    constructor(date: number, atype: string, action: string, colonist_id: string) {
+    constructor(date: string, atype: string, action: string, colonist_id: string) {
         this.date = date;
         this.atype = atype;
         this.action = action;
@@ -45,7 +45,7 @@ export class NewEncounter {
 
 export interface Encounter {
     id: string;
-    date: number;
+    date: string;
     atype: string;
     action: string;
     colonist_id: string;

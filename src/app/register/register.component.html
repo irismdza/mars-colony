@@ -1,18 +1,21 @@
 <body class="register">
   <div class="container">
     <h1>Register</h1>
-    <form [formGroup]="registerForm" [ngClass]={invalid:registerForm.invalid}>
+    <form class="register-form"
+          [formGroup]="registerForm" 
+          [ngClass]="{ 'submitting': submitting}"
+          (ngSubmit)="postNewColonist($event)">
       <fieldset>
-        <input type="text" placeholder="Name" formControlName="name" name="colonistName" required>
-        <input type="number" placeholder="Age" formControlName="age" name="colonistAge" required>
+        <input type="text" placeholder="Name" formControlName="name" name="colonistName">
+        <input type="number" placeholder="Age" formControlName="age" name="colonistAge">
         <div class="custom-select">
-          <select formControlName="job_id" name="job_id" required>
+          <select formControlName="job_id" name="job_id">
             <option value="none">Select Occupation</option>
             <option *ngFor="let job of marsJobs" value="{{ job.id }}">{{ job.name }}</option>
           </select>
         </div>
       </fieldset>
-      <button type="button" (click)="logColonist()">Check in</button>
+      <button>Check in</button>
     </form>
   </div>
 </body>

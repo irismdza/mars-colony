@@ -1,8 +1,9 @@
 <body>
-  <div>
+  <div class="encounters container">
     <h1>Recent Encounters</h1>
     <p>See an Alien? Report it!</p>
-    <ul class="encounter-list"></ul>
+    <ul class="encounter-list" ng-repeat="encounter in encounters">
+    <li>{{encounter}}</li></ul>
     <button>Report Encounter</button>
   </div>
 </body>
