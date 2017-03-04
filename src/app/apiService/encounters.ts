@@ -13,11 +13,12 @@ interface EncounterPostRequest {
 
 @Injectable()
 export class EncountersAPIService {
+
     constructor(private http: Http) {}
 
     getEncounters(): Observable<Encounter[]> {
         return this.http.get(ENCOUNTERS_URL)
-                    .map((res: Response) => res.json().encounter);
+                    .map((res: Response) => res.json().encounters);
     }
 
     saveNewEncounter(newEncounter: EncounterPostRequest): Observable<Encounter> {

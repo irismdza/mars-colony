@@ -55,24 +55,29 @@ export class ReportComponent implements OnInit {
 
   }
 
-    postNewEncounter(event) {
-      event.preventDefault();
+//format Date into yyyy-MM-dd
+  private getDate() {
+    const d = new Date();
+    return `${d.getFullYear()} - ${d.getMonth() + 1} - ${d.getDate()}`;
+  }
 
-      if(this.reportForm.invalid) {
-        // The form is invalid...
-      } else {
-          const date = '';
-          const atype = this.reportForm.get('atype').value;
-          const action = this.reportForm.get('action').value;
-          const colonist_id = '';
+  postNewEncounter(event) {
+    event.preventDefault();
 
-          const newEncounter: NewEncounter = new NewEncounter(date, atype, action, colonist_id);
+    if(this.reportForm.invalid) {
+      // The form is invalid...
+    } else {
+      const date = new Date().toString();
+      const atype = this.reportForm.get('atype').value;
+      const action = this.reportForm.get('action').value;
+      const colonist_id = localStorage.getItem("colonist_id");
 
-          this.encountersAPIService.saveNewEncounter({ encounter: newEncounter })
-                                .subscribe((result) => {
-            console.log('Encounter was saved:', result);
-        });
-      }
+      const newEncounter: NewEncounter = new NewEncounter(date, atype, action, colonist_id);
+
+      this.encountersAPIService.saveNewEncounter({ encounter: newEncounter })
+                            .subscribe((result) => {
+        console.log('Encounter was saved:', result);
+      });
     }
-
+  }
 }

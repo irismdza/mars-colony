@@ -1,14 +1,17 @@
 .register {
-    background-color: black;
+    background: linear-gradient(rgba(0,0,0,.8),rgba(237,67,67,.7)),
+    url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/69304e47547633.587dfb2e455e3.jpg') no-repeat center top;
+    background-size: cover, cover;
     text-align: center;
-    color: white;   
-    .container {
-        height: 100vh;
-    }
+    color: white;
+    height: 100vh;   
+    font-size: 1rem;
+    padding: 20px;
+    height: 100vh;
     h1 {
-        font-size: 50px;
+        font-size: 2.2rem;
         color: white;
-        font-weight: normal;
+        font-weight: 100;
     }
     fieldset {
         border: none;
@@ -17,18 +20,20 @@
     select {
         border: 0;
         border-bottom: 1px solid gray;
-        background-color: black;
+        background-color: rgba(0,0,0,.2);
         width: 100%;
-        color: red;
-        font-size: 20px;
+        color: white;
+        font-size: 1rem;
+        font-weight: 100;
     }
     input::placeholder {
-        color: red;
+        color: white;
     }
     button {
-        background-color: black;
+        background-color: transparent;
         border: none;
         color: white;
-        font-size: 50px;
+        font-size: 2.2rem;
+        font-weight: 100;
     }
 }

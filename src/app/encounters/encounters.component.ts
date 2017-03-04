@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Encounter } from '../models';
+import { ENCOUNTERS_URL } from '../models/API';
+import { EncountersAPIService } from '../apiService/encounters';
 
 @Component({
   selector: 'app-encounters',
@@ -6,17 +9,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./encounters.component.scss'],
   providers: [EncountersAPIService]
 })
+
 export class EncountersComponent implements OnInit {
 
-  constructor() { }
+  encounters: Encounter[];
+  clickedButton: boolean;
+
+  constructor(
+    private encountersAPIService: EncountersAPIService
+    ) {
+      this.getEncounters();
+    }
 
   getEncounters() {
-    this.encountersAPIService.getMarsJobs()
-                        .subscribe((result) => {
-    this.marsJobs = result;
-          console.log('Get mars jobs!', result);
+    this.encountersAPIService
+      .getEncounters()
+      .subscribe((result) => {
+        this.encounters = result;
+          console.log(result);
       });
-  ngOnInit() {
   }
-
+  
+  ngOnInit() {
+    
+  }
 }

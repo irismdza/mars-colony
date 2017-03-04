@@ -58,7 +58,6 @@ export class RegisterComponent implements OnInit {
     this.marsJobs = result;
           console.log('Get mars jobs!', result);
       });
-
   }
 
   postNewColonist(event) {
@@ -67,15 +66,17 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.invalid) {
       // The form is invalid...
     } else {
-        const name = this.registerForm.get('name').value;
-        const age = this.registerForm.get('age').value;
-        const job_id = this.registerForm.get('job_id').value;
+      const name = this.registerForm.get('name').value;
+      const age = this.registerForm.get('age').value;
+      const job_id = this.registerForm.get('job_id').value;
 
-        const newColonist: NewColonist = new NewColonist(name, age, job_id);
+      const newColonist: NewColonist = new NewColonist(name, age, job_id);
 
-        this.colonistAPIService.saveColonist({ colonist: newColonist })
-                              .subscribe((result) => {
-          console.log('Colonist was saved:', result);
+      this.colonistAPIService
+          .saveColonist({ colonist: newColonist })
+          .subscribe((result) => { 
+            localStorage.setItem("colonist_id", JSON.stringify(result.id));
+            console.log('Colonist was saved:', result);
       });
     }
   }
