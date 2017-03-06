@@ -13,7 +13,7 @@ import { EncountersAPIService } from '../apiService/encounters';
 export class EncountersComponent implements OnInit {
 
   encounters: Encounter[];
-  clickedButton: boolean;
+  // clickedButton: boolean;
 
   constructor(
     private encountersAPIService: EncountersAPIService
@@ -31,6 +31,5 @@ export class EncountersComponent implements OnInit {
   }
   
   ngOnInit() {
-    
   }
 }

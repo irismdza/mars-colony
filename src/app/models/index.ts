@@ -34,8 +34,8 @@ export class NewEncounter {
     date: string;
     atype: string;
     action: string;
-    colonist_id: number;
-    constructor(date: string, atype: string, action: string, colonist_id: number) {
+    colonist_id: string;
+    constructor(date: string, atype: string, action: string, colonist_id: string) {
         this.date = date;
         this.atype = atype;
         this.action = action;
@@ -48,7 +48,7 @@ export interface Encounter {
     date: string;
     atype: string;
     action: string;
-    colonist_id: number;
+    colonist_id: string;
 }
 
 

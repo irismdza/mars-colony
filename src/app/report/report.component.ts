@@ -8,6 +8,7 @@ import {
   ValidatorFn,
   AbstractControl
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { ALIENS_URL, ENCOUNTERS_URL } from '../models/API';
 
@@ -31,7 +32,8 @@ export class ReportComponent implements OnInit {
 
   constructor(
     private aliensAPIService: AliensAPIService,
-    private encountersAPIService: EncountersAPIService) {
+    private encountersAPIService: EncountersAPIService,
+    private router: Router) {
 
     this.getAliens();
 
@@ -48,36 +50,59 @@ export class ReportComponent implements OnInit {
 
   getAliens() {
     this.aliensAPIService.getAliens()
-                        .subscribe((result) => {
-    this.aliens = result;
-          console.log('Got aliens!', result);
+      .subscribe((result) => {
+        this.aliens = result;
+        console.log('Got aliens!', result);
       });
 
   }
 
-//format Date into yyyy-MM-dd
+  //format Date into yyyy-MM-dd
   private getDate() {
     const d = new Date();
-    return `${d.getFullYear()} - ${d.getMonth() + 1} - ${d.getDate()}`;
+    const yyyy = d.getFullYear();
+    let fuckmonths
+    let fuckdays;
+    let mm = (d.getMonth() + 1)
+    if (mm < 10) {
+      fuckmonths = '0' + mm
+    }
+    let dd = (d.getDate() + 1)
+    if (dd < 10) {
+     fuckdays = '0' + dd
+    }
+    console.log(fuckdays)
+    console.log(fuckmonths)
+    return `${yyyy}-${fuckmonths}-${fuckdays}`;
+    // return "5"
   }
+
+
+
+
+  // private getDate() {
+  //   const date = new Date();
+  //   return `${date.getFullYear()}-${date.getMonth() + 1} -${date.getDate()}`;
+  // }
 
   postNewEncounter(event) {
     event.preventDefault();
 
-    if(this.reportForm.invalid) {
+    if (this.reportForm.invalid) {
       // The form is invalid...
     } else {
-      const date = new Date().toString();
+      const date = this.getDate()
       const atype = this.reportForm.get('atype').value;
       const action = this.reportForm.get('action').value;
-      const colonist_id = localStorage.getItem("colonist_id");
+      const colonist_id = localStorage.getItem('colonist_id');
 
       const newEncounter: NewEncounter = new NewEncounter(date, atype, action, colonist_id);
 
       this.encountersAPIService.saveNewEncounter({ encounter: newEncounter })
-                            .subscribe((result) => {
-        console.log('Encounter was saved:', result);
-      });
+        .subscribe((result) => {
+          console.log('Encounter was saved:', result);
+        });
     }
+    this.router.navigate(['encounters']);
   }
 }

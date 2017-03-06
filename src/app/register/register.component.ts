@@ -8,6 +8,7 @@ import {
   ValidatorFn,
   AbstractControl
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { COLONISTS_URL, JOBS_URL } from '../models/API';
 
@@ -29,8 +30,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private colonistAPIService: ColonistAPIService,
-    private jobsAPIService: JobsAPIService
-    ) {
+    private jobsAPIService: JobsAPIService,
+    private router: Router ) {
 
     this.getMarsJobs();
 
@@ -75,9 +76,10 @@ export class RegisterComponent implements OnInit {
       this.colonistAPIService
           .saveColonist({ colonist: newColonist })
           .subscribe((result) => { 
-            localStorage.setItem("colonist_id", JSON.stringify(result.id));
+            localStorage.setItem('colonist_id', JSON.stringify(result.id));
             console.log('Colonist was saved:', result);
       });
     }
+    this.router.navigate(['encounters'])
   }
 }

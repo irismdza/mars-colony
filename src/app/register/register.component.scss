@@ -36,4 +36,12 @@
         font-size: 2.2rem;
         font-weight: 100;
     }
+    .input-error {
+    transition:all linear 0.5s;
+    background: transparent;
+    }
+    .input-error.ng-invalid {
+    color:white;
+    background: red;
+    }
 }
