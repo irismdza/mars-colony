@@ -57,39 +57,32 @@ export class ReportComponent implements OnInit {
 
   }
 
-  //format Date into yyyy-MM-dd
+  // format Date into yyyy-MM-dd
   private getDate() {
     const d = new Date();
     const yyyy = d.getFullYear();
-    let fuckmonths
-    let fuckdays;
+    let months
+    let days;
     let mm = (d.getMonth() + 1)
     if (mm < 10) {
-      fuckmonths = '0' + mm
+      months = '0' + mm
     }
     let dd = (d.getDate() + 1)
     if (dd < 10) {
-     fuckdays = '0' + dd
+     days = '0' + dd
     }
-    console.log(fuckdays)
-    console.log(fuckmonths)
-    return `${yyyy}-${fuckmonths}-${fuckdays}`;
+    console.log(days)
+    console.log(months)
+    return `${yyyy}-${months}-${days}`;
     // return "5"
   }
-
-
-
-
-  // private getDate() {
-  //   const date = new Date();
-  //   return `${date.getFullYear()}-${date.getMonth() + 1} -${date.getDate()}`;
-  // }
 
   postNewEncounter(event) {
     event.preventDefault();
 
     if (this.reportForm.invalid) {
-      // The form is invalid...
+    this.clickedButton = true;
+    
     } else {
       const date = this.getDate()
       const atype = this.reportForm.get('atype').value;
