@@ -36,12 +36,15 @@
         font-size: 2.2rem;
         font-weight: 100;
     }
-    .input-error {
-    transition:all linear 0.5s;
+    .submitting {
+    transition: all linear 0.5s;
     background: transparent;
     }
-    .input-error.ng-invalid {
-    color:white;
-    background: red;
+    .submitting .ng-invalid {
+        animation: error .5s infinite;
+        @keyframes error {
+        0% { box-shadow: 0px 0px 0px 0px rgba(81, 157, 158, .5); }
+        100% { box-shadow: 0px 0px 0px 15px rgba(255,0,0,0); }
+        }
     }
 }

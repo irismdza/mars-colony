@@ -2,7 +2,7 @@
     <h1>Register</h1>
     <form class="register-form"
           [formGroup]="registerForm" 
-          [ngClass]="{ 'submitting': submitting}"
+          [ngClass]="{'submitting': clickedButton}"
           (ngSubmit)="postNewColonist($event)">
       <fieldset>
         <input type="text" placeholder="Name" formControlName="name" name="colonistName" ng-model="val" ng-pattern="/^\d+$/" class="input-error">

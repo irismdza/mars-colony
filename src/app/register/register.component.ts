@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private colonistAPIService: ColonistAPIService,
     private jobsAPIService: JobsAPIService,
-    private router: Router ) {
+    private router: Router) {
 
     this.getMarsJobs();
 
@@ -43,9 +43,9 @@ export class RegisterComponent implements OnInit {
   }
 
   acceptAge(min: number, max: number) {
-    return (control: AbstractControl): {[key: string]: any} => {
+    return (control: AbstractControl): { [key: string]: any } => {
       if (control.value < min || control.value > max) {
-        return { 'Sorry good luck!': { age: control.value }};
+        return { 'Sorry good luck!': { age: control.value } };
       }
     }
   }
@@ -55,17 +55,18 @@ export class RegisterComponent implements OnInit {
 
   getMarsJobs() {
     this.jobsAPIService.getMarsJobs()
-                        .subscribe((result) => {
-    this.marsJobs = result;
-          console.log('Get mars jobs!', result);
+      .subscribe((result) => {
+        this.marsJobs = result;
+        console.log('Get mars jobs!', result);
       });
   }
 
   postNewColonist(event) {
     event.preventDefault();
-    
-    if(this.registerForm.invalid) {
-      // The form is invalid...
+
+    if (this.registerForm.invalid) {
+      this.clickedButton = true;
+
     } else {
       const name = this.registerForm.get('name').value;
       const age = this.registerForm.get('age').value;
@@ -74,12 +75,13 @@ export class RegisterComponent implements OnInit {
       const newColonist: NewColonist = new NewColonist(name, age, job_id);
 
       this.colonistAPIService
-          .saveColonist({ colonist: newColonist })
-          .subscribe((result) => { 
-            localStorage.setItem('colonist_id', JSON.stringify(result.id));
-            console.log('Colonist was saved:', result);
-      });
+        .saveColonist({ colonist: newColonist })
+        .subscribe((result) => {
+          localStorage.setItem('colonist_id', JSON.stringify(result.id));
+          console.log('Colonist was saved:', result);
+        });
+      this.router.navigate(['encounters'])
     }
-    this.router.navigate(['encounters'])
+
   }
 }
