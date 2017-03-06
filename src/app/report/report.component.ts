@@ -40,7 +40,7 @@ export class ReportComponent implements OnInit {
     this.reportForm = new FormGroup({
       date: new FormControl(''),
       atype: new FormControl('', [Validators.required]),
-      action: new FormControl('', [Validators.required, Validators.maxLength(20)]),
+      action: new FormControl('', [Validators.required, Validators.minLength(2)]),
       colonist_id: new FormControl(''),
     });
   }
@@ -81,8 +81,8 @@ export class ReportComponent implements OnInit {
     event.preventDefault();
 
     if (this.reportForm.invalid) {
-    this.clickedButton = true;
-    
+      this.clickedButton = true;
+
     } else {
       const date = this.getDate()
       const atype = this.reportForm.get('atype').value;
@@ -95,7 +95,7 @@ export class ReportComponent implements OnInit {
         .subscribe((result) => {
           console.log('Encounter was saved:', result);
         });
+      this.router.navigate(['encounters']);
     }
-    this.router.navigate(['encounters']);
   }
 }

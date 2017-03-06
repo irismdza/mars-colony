@@ -3,7 +3,7 @@
   <h1>Report Encounter</h1>
   <p>Safety on Mars is your responsibility</p>
   <form [formGroup]="reportForm"
-        [ngClass]="{ 'submitting': submitting}"
+        [ngClass]="{'submitting': clickedButton}"
         (ngSubmit)="postNewEncounter($event)">
     <fieldset>
       <select formControlName="atype" name="atype">
