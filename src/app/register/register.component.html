@@ -1,19 +1,17 @@
-  <div class="register container">
+<div class="register">
+  <form class="container"
+        [formGroup]="registerForm" 
+        [ngClass]="{'submitting': clickedButton}"
+        (ngSubmit)="postNewColonist($event)">
     <h1>Register</h1>
-    <form class="register-form"
-          [formGroup]="registerForm" 
-          [ngClass]="{'submitting': clickedButton}"
-          (ngSubmit)="postNewColonist($event)">
-      <fieldset>
-        <input type="text" placeholder="Name" formControlName="name" name="colonistName">
-        <input type="number" placeholder="Age" formControlName="age" name="colonistAge">
-        <div class="custom-select">
-          <select formControlName="job_id" name="job_id">
-            <option value="" disabled selected>Select Occupation</option>
-            <option *ngFor="let job of marsJobs" value="{{ job.id }}">{{ job.name }}</option>
-          </select>
-        </div>
-      </fieldset>
-      <button>Check in</button>
-    </form>
-  </div>
+    <fieldset>
+      <input type="text" placeholder="Name" formControlName="name" name="colonistName">
+      <input type="number" placeholder="Age" formControlName="age" name="colonistAge">
+      <select formControlName="job_id" name="job_id">
+        <option value="" selected>Select Occupation</option>
+        <option *ngFor="let job of marsJobs" value="{{ job.id }}">{{ job.name }}</option>
+      </select>
+    </fieldset>
+    <button>Check in &rarr;</button>
+  </form>
+</div>

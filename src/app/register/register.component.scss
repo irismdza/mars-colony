@@ -1,50 +1,71 @@
+@import '../../themes';
+
 .register {
-    background: linear-gradient(rgba(0,0,0,.8),rgba(237,67,67,.7)),
-    url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/69304e47547633.587dfb2e455e3.jpg') no-repeat center top;
-    background-size: cover, cover;
-    text-align: center;
-    color: white;
-    height: 100vh;   
-    font-size: 1rem;
-    padding: 20px;
-    height: 100vh;
-    h1 {
-        font-size: 2.2rem;
-        color: white;
-        font-weight: 100;
+    @include page-template;
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 65%;
+        max-width: 500px;
+        margin: 0 auto;
     }
     fieldset {
         border: none;
     }
-    input,
-    select {
-        border: 0;
-        border-bottom: 1px solid gray;
-        background-color: rgba(0,0,0,.2);
+    input {
+        background-color: transparent;
+        border: 1px solid darkgray;
         width: 100%;
         color: white;
         font-size: 1rem;
         font-weight: 100;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    select {
+        background-color: transparent;
+        border: 1px solid darkgray;
+        border-radius: 0;
+        width: 100%;
+        color: white;
+        font-size: 1rem;
+        font-weight: 100;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+        padding: 1rem;
+        margin: 1rem 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
     }
     input::placeholder {
         color: white;
     }
+    input:hover, input:active, select:hover, select:active {
+        background-color: rgba(0,0,0,.2);
+    }
+    input:focus, select:focus {
+        outline: black;
+        box-shadow: 2px 3px 3px black;
+    }
     button {
-        background-color: transparent;
-        border: none;
+        font-size: 1rem;
+        letter-spacing: 2px;
+        font-weight: 300;
         color: white;
-        font-size: 2.2rem;
-        font-weight: 100;
+        background-color: transparent;
+        padding: 1rem;
+        border: 1px solid darkgray;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+        min-height: 50px;
+        margin: 1rem 0;
     }
-    .submitting {
-    transition: all linear 0.5s;
-    background: transparent;
+    button:hover {
+        background-color: rgba(0,0,0,.2);
     }
-    .submitting .ng-invalid {
-        animation: error .5s infinite;
-        @keyframes error {
-        0% { box-shadow: 0px 0px 0px 0px darkred; }
-        100% { box-shadow: 0px 0px 0px 10px darkred; }
-        }
-    }
+    @include error-animation;
 }

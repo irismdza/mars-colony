@@ -1,18 +1,19 @@
-<body>
-  <div class="report container">
-  <h1>Report Encounter</h1>
-  <p>Safety on Mars is your responsibility</p>
-  <form [formGroup]="reportForm"
-        [ngClass]="{'submitting': clickedButton}"
-        (ngSubmit)="postNewEncounter($event)">
-    <fieldset>
-      <select formControlName="atype" name="atype">
-        <option value="" disabled selected>Select alien type</option>
-        <option *ngFor="let alien of aliens" value="{{ alien.type }}">{{ alien.type }}</option>
-      </select>
-    </fieldset>
-    <textarea formControlName="action" placeholder="Action taken" name="action"></textarea>
-    <button>Submit Report</button>
-  </form>
+<div class="report">
+<form class="report"
+      [formGroup]="reportForm"
+      [ngClass]="{'submitting': clickedButton}"
+      (ngSubmit)="postNewEncounter($event)">
+  <div>
+    <h1>Report Encounter</h1>
+    <p>Safety on Mars is your responsibility</p>
   </div>
-</body>
+  <fieldset>
+    <select formControlName="atype" name="atype">
+      <option value="" disabled selected>Select alien type</option>
+      <option *ngFor="let alien of aliens" value="{{ alien.type }}">{{ alien.type }}</option>
+    </select>
+  </fieldset>
+  <textarea formControlName="action" placeholder="Action taken" name="action"></textarea>
+  <button>Submit Report</button>
+</form>
+</div>

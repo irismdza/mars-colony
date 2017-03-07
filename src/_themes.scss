@@ -1,7 +1,51 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    h1, h2, p, a, button, form, textarea, textarea::placeholder, select {
+@mixin page-template {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: linear-gradient(rgba(0,0,0,.8),rgba(150,0,20,.8)),
+    url('https://mir-s3-cdn-cf.behance.net/project_modules/1400/69304e47547633.587dfb2e455e3.jpg') no-repeat center top;
+    background-size: cover, cover;
+    text-align: center;
+    color: white;
+    font-size: 1rem;
     font-weight: 100;
+    height: 100vh;
+    width: 100vw;
+    h1 {
+        font-size: 2.2rem;  
+        text-shadow: 2px 3px 4px black; 
+        margin: 1rem 0;
     }
 }
+
+@mixin main-font-style {
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+@mixin error-animation {
+    .submitting {
+    transition: all linear 0.5s;
+    background: transparent;
+    }
+    .submitting .ng-invalid {
+        animation: error .5s infinite;
+        @keyframes error {
+        0% { box-shadow: 0px 0px 0px 0px rgba(237,67,67,.2); }
+        100% { box-shadow: 0px 0px 0px 5px rgba(237,67,67,.6); }
+        }
+    }
+}
+
+
+* {
+    box-sizing: border-box;
+    @include main-font-style;
+}
+body {
+    font-size: 16px;
+    h1, h2, p, a, button, form, select, textarea, textarea::placeholder {
+    }
+}
+
