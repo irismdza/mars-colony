@@ -2,41 +2,13 @@
 
 .register {
     @include page-template;
-    form {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 65%;
-        max-width: 500px;
-        margin: 0 auto;
-    }
-    fieldset {
-        border: none;
-    }
+    @include form-template;
     input {
-        background-color: transparent;
-        border: 1px solid darkgray;
-        width: 100%;
-        color: white;
-        font-size: 1rem;
-        font-weight: 100;
-        font-family: 'Roboto', sans-serif;
-        text-transform: uppercase;
-        padding: 1rem;
-        margin: 1rem 0;
+        @include form-elements-style;
     }
     select {
-        background-color: transparent;
-        border: 1px solid darkgray;
+        @include form-elements-style;
         border-radius: 0;
-        width: 100%;
-        color: white;
-        font-size: 1rem;
-        font-weight: 100;
-        font-family: 'Roboto', sans-serif;
-        text-transform: uppercase;
-        padding: 1rem;
-        margin: 1rem 0;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
@@ -44,28 +16,18 @@
     input::placeholder {
         color: white;
     }
-    input:hover, input:active, select:hover, select:active {
+    input:hover, input:active, select:hover, select:active, button:hover, button:active {
         background-color: rgba(0,0,0,.2);
     }
-    input:focus, select:focus {
+    input:focus, select:focus, button:focus {
         outline: black;
         box-shadow: 2px 3px 3px black;
     }
     button {
-        font-size: 1rem;
-        letter-spacing: 2px;
+        @include form-elements-style;
         font-weight: 300;
-        color: white;
-        background-color: transparent;
-        padding: 1rem;
-        border: 1px solid darkgray;
-        font-family: 'Roboto', sans-serif;
-        text-transform: uppercase;
+        letter-spacing: 2px;
         min-height: 50px;
-        margin: 1rem 0;
-    }
-    button:hover {
-        background-color: rgba(0,0,0,.2);
     }
     @include error-animation;
 }
